@@ -28,11 +28,11 @@ int main()
 {
 	long p_sum = 0;
 	
-	// use a priori knowledge for less processing time (*)
+	// add 2 as first element of the array so we can use Sieve of Eatosthenes later
 	primes[primes_length++] = 2;
 	
 	// determine prime numbers up to MAX_PRIME
-	// (*)
+	// by starting with 3 to use Sieve of Eatosthenes
 	for (int i = 3; i < MAX_PRIME; i+=2) {
 		// if i is a prime number store it (requirement for Sieve of Eratosthenes)
 		if (isPrime(i)) {
