@@ -3,6 +3,11 @@ siehe DynamicMemoryAllocation.cpp
 
 Bei den 1000 Eingaben über Random kommen als Mittelwert 0.501969 und als Standardabweichung 0.282325 raus, was von daher passende Zahlen sind, da alle 1000 Eingaben Zahlen zwischen 0 und 1 sind, und somit der Mittelwert von 0,5 wie erwartet. Auch die Standardabweichung passt.
 
+Aufgabe 3.2:
+a) Die 11111ste Primzahl ist 117773.
+b) Die Summe aller Primzahlen bis 1000 ist 76127. Die Summe aller Primzahlen bis 10000 ist 5736396. Die Summe aller Primzahlen bis 100000 ist 454396537.
+c) Die Summe aller Primzahl bis 1000000 ist 37550402023. Diese Zahl passt nicht in int rein, dementsprechend haben wir der Variable, in der die Summe aller Primzahlen bis 1000000 abgespeichert wird, den Typen long zugewiesen.
+
 Aufgabe 3.3:
 a) Die header-Datei helper.h ist eine normale C++-Datei die Funktionsdeklarationen enthält. Diese kann (und wird hier auch) mit #include in eine .cpp Datei (hier: Minmax.cpp) eingebunden werden. Die Funktionen aus der helper.h können so einfach in Minmax.cpp aufgerufen und benutzt werden.
 b) Als Antwort kommt 3. Das liegt daran, dass es die MAX-Funktion nur mit int-Eingabewerten, nicht aber mit double-Eingabewerten gibt. Aus diesem Grund wandelt er die zwei Zahlen erst in int um um überprüft dann, welche Zahl von 3 und 3 die größere ist.
