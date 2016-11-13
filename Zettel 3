@@ -1,0 +1,9 @@
+Aufgabe 3.1:
+siehe DynamicMemoryAllocation.cpp
+
+Bei den 1000 Eingaben über Random kommen als Mittelwert 0.501969 und als Standardabweichung 0.282325 raus, was von daher passende Zahlen sind, da alle 1000 Eingaben Zahlen zwischen 0 und 1 sind, und somit der Mittelwert von 0,5 wie erwartet. Auch die Standardabweichung passt.
+
+Aufgabe 3.3:
+a) Die header-Datei helper.h ist eine normale C++-Datei die Funktionsdeklarationen enthält. Diese kann (und wird hier auch) mit #include in eine .cpp Datei (hier: Minmax.cpp) eingebunden werden. Die Funktionen aus der helper.h können so einfach in Minmax.cpp aufgerufen und benutzt werden.
+b) Als Antwort kommt 3. Das liegt daran, dass es die MAX-Funktion nur mit int-Eingabewerten, nicht aber mit double-Eingabewerten gibt. Aus diesem Grund wandelt er die zwei Zahlen erst in int um um überprüft dann, welche Zahl von 3 und 3 die größere ist.
+c) Wenn man MAX durch MIN austauscht, dann kommt die tatsächliche kleinere Zahl von den beiden heraus. Das liegt daran, das es für MIN auch eine double-Funktion gibt. Um das Problem zu lösen kann man einfach für MAX auch eine double-Funktion implementieren. (siehe helper.h)
