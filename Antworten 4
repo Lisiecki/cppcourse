@@ -1,0 +1,19 @@
+4.1:
+a) Es kommen als Werte die Werte raus, die ohne das +1 jeweils die Min-Zahl sind. Dies liegt daran, dass max() jeweils die größte darstellbare Zahl für diesen Datentyp ist. Wenn man dann eins addiert, landet man wieder bei der kleinsten Zahl. Deshalb werden diese jeweils ausgegeben.
+b)isinf(0.0) -> 0 also false
+  isinf(1.0/0.0) -> 1 also true
+  isnan(0.0) -> 0 also false
+  isnan(0.0/0.0) -> 1 also true
+c) 
+Ergebnisse für Überprüfungen:
+3 >= +inf? : false
+-3 <= -inf? : false
+3 <= +inf? : true
+-3 >= -inf? : true
+3 >= NaN? :false
+3 <= NaN? :false
+
+4.3:
+a) Normalerweise müsste man erwarten, dass für alle 21 Zahlen die Antwort 1.11111 erscheinen würde, da dies die mathematisch korrekte Antwort wäre. Stattdessen wird ab x11 eine falsche Antwort geliefert, die sich dementsprechend von x zu x immer weiter von der eigentlichen Zahl abweicht.
+b) Dieses falsche Ergebnis liegt daran, dass der Computer Rundungsfehler in die Rechnung einbaut. Diese Rundungsfehler werden von x zu x immer größer, da sie sich sozusagen "aufsummieren". Das heißt, bei zum Beispiel x19 wird mit dem Wert von x18 gerechnet, welcher schon falsch ist. Nun kommt hier noch der Rundungsfehler hinzu, der in x19 entsteht, und so ist der Fehler noch größer, als er bei x18 war. Im Computer treten oft Rundungsfehler bei Gleitkommazahlen auf, da diese nur endlich dargestellt werden können. Dies ist auch hier der Fall, da 10/9 eine unendlich lange Zahl ist.
+
