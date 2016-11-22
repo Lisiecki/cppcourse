@@ -1,0 +1,110 @@
+Im Folgenden sind mit den Bezeichnungen jeweils diese Konstruktoren/Operationen gemeint:
+a-Konstruktor:
+Integer(const int a) {
+    digits = new char[NUMDIGITS];
+    int sign=1; 
+    if (a<0) sign=-1;
+    for (int i=0; i<NUMDIGITS; ++i)
+      digits[i] = ((sign*a) >> i) % 2;
+    if (sign == -1)
+      *this = this->twoscomplement();
+  }
+
+Default-Konstruktor:
+Integer() {
+    digits = new char[NUMDIGITS];
+    for (int i=0; i<NUMDIGITS; ++i) digits[i] = 0;
+  }
+
+Dekonstruktor:
+~Integer() {
+    delete[] digits; 
+  }
+
+assignment-Operator:
+Integer& operator=(const Integer& rhs) {
+    for (int i=0; i<NUMDIGITS; ++i) 
+      digits[i] = rhs.digits[i];
+    return *this;    
+  }
+
+addition-Operator:
+Integer operator+(const Integer& rhs) {
+    Integer r;
+    char carry=0;
+    for (int i=0; i<NUMDIGITS; ++i) {
+      char tmp    = digits[i] + rhs.digits[i] + carry;
+      carry       = tmp / 2;
+      r.digits[i] = tmp % 2;
+    }
+    return r;    
+  }
+
+subtraction-Operator:
+Integer operator-(const Integer& rhs) {
+    Integer r;
+    r = *this + rhs.twoscomplement();
+    return r;    
+  }
+
+
+
+a)
+Integer a(92): Der a-Konstruktor wird aufgerufen mit dem Parameter a = 92.
+Integer b, c: Es wird jeweils der Default-Konstruktor aufgerufen.
+
+b)
+b = 25: Es wird der a-Konstruktor aufgerufen mit dem Parameter a = 25 um ein Integer zu erstellen.
+Daraufhin wird der assignment-Operator aufgerufen um dieses Integer in b zu speichern.
+Zum Schluss wird noch der Dekonstruktor aufgerufen, um das zuvor erstellte Integer wieder zu löschen, da es nicht mehr benötigt wird.
+
+c = b:Es wurde der assignment operator verwendet. 
+
+c)
+e = a + b: 
+Zuerst wird der addition-Operator ausgeführt, um a und b zu addieren.
+	In diesem Operator wird der Default-Konstruktor aufgerufen, um ein Integer zu erzeugen, in dem a+b dann abgespeichert wird.
+Jetzt wird der assignment-Operator ausgeführt, um dieses Integer e zuzuweisen.
+Zum Schluss wird noch der Dekonstruktor aufgerufen, um das zwischenzeitlich erstellte Integer wieder zu löschen.
+
+f = a - b: 
+Als erstes wird der subtraction-Operator ausgeführt um a-b zu berechnen.
+	Hier wird zweimal der Default-Konstruktor aufgerufen, um 
+		1. ein Integer zu erzeugen, in dem a-b abgespeichert wird und 
+		2. in der Methode twoscomplement() ein Integer zu erzeugen, welches von dieser Methode zurückgegeben wird.
+	Im subtraction-Operator wird außerdem in dieser Zeile *this + rhs.twoscomplement() der addition-Operator ausgeführt.
+		Wobei hier wieder der Default-Konstruktor aufgerufen wird.
+	Nun wird im subtraction-Operator der assignment-Operator ausgeführt, um die Addition r zuzuweisen.
+	Jetzt wird zwei mal der Dekonstruktor aufgerufen, um die zwei nun überflüssigen erstellten Integers zu löschen.
+Mit dem assignment-Operator wird nun das Integer a-b f zugewiesen.
+Und mit dem Dekonstruktor wird dieses Integer a-b wieder gelöscht.
+
+g = c + 15: 
+Als erstes wird mit dem a-Konstruktor ein Integer mit a = 15 erstellt.
+Als nächstes wird dieses Integer mit dem addition-Operator auf das Integer c addiert.
+	Hierfür wird im addition-Operator der Default-Konstruktor aufgerufen um ein Integer zu erstellen, in dem das Ergebnis abgespeichert 		wird.
+Mit dem assignment-Operator wird nun das Ergebnis-Integer g zugewiesen.
+Zum Schluss wird zwei mal der Dekonstruktor aufgerufen um die zwischendurch erstellten Integers zu löschen.
+
+d) Der Dekonstruktor ∼Integer() wird oft aufgerufen. Dies passiert zum Beispiel zum Schluss von b = 25. Der Grund ist, dass erst ein Integer mit dem Wert 25 erstellt werden muss, bevor dieses mit dem assignment-Operator b zugewiesen werden kann. Dieses Integer wird nun nicht mehr gebraucht und wird daher automatisch mit dem Dekonstruktor gelöscht.
+
+e)
+Es wird 
+Copy constructor
+<< operator
+01110101 (117)
+deconstructor
+
+statt
+
+<< operator
+01110101 (117)
+
+ausgeführt.
+Das liegt daran, dass nun das Integer a erst einmal kopiert wird bevor damit gearbeitet wird. Diese Kopie muss zum Schluss wieder gelöscht werden.
+
+//Stimmt das???????
+
+
+
+
