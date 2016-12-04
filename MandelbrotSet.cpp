@@ -1,6 +1,6 @@
 #include <iostream>
-#include <complex>
 #include <fstream>
+#include "classComplex.h"
 
 #define N 350
 #define M 200
@@ -19,8 +19,8 @@ double calc_y_m(int m) {
 }
 
 // generate complex number z_m = x_n + y_m * i
-std::complex<double> generate_z_m(double x_n, double y_m) {
-	std::complex<double> z_m(x_n, y_m);
+Complex generate_z_m(double x_n, double y_m) {
+	Complex z_m(x_n, y_m);
 	return z_m;
 }
 
@@ -37,13 +37,13 @@ int main() {
 	for (int n = 0; n < N; n++) {
 		for (int m = 0; m < M; m++) {
 			double x_n, y_m;
-			std::complex<double> z_n = 0.0;
+			Complex z_n;
 			x_n = calc_x_n(n);
 			y_m = calc_y_m(m);
 			// use z_m = x_m + y_m * i and starting with z_0 = 0 iterate until either |z_n| >= 2 or z_n_max is reached
-			std::complex<double> z_m = generate_z_m(x_n, y_m);
-			for (double i = 0.0; z_n.abs() < 2.0 && i < N_MAX; i++) {
-				z_n = z_n * z_n + z_m.real();
+			Complex z_m = generate_z_m(x_n, y_m);
+			for (double i = 0.0; z_n.betrag() < 2.0 && i < N_MAX; i++) {
+				z_n = z_n * z_n + z_m;
 				// for every point (x_n, y_m) write to a file named mandelbrot.dat one line with the coordinates of the point and the value c = (n_max - n)/n_max
 				outfile << x_n << "\t" << y_m << "\t" << calculate_c(N_MAX, i) << std::endl;
 			}
