@@ -1,0 +1,2 @@
+Aufgabe 6.2:
+The plot visualizes the mandelbrot set for the sequence z_n+1 = z^2_n + z_m and with z0 = 0. The black points in the image represent the part where the sequence does not approach infinity. The real and imaginary parts of z_m are used as image coordinates to visualize the mandelbrot set.
