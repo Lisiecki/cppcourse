@@ -1,0 +1,30 @@
+###
+### example for Gnuplot
+###
+### task:  plot x,y-data from a file table.dat which must exist in the same directory
+###
+### usage: $ gnuplot plot_table.gpl
+###
+### help:  $ gnuplot    # to start Gnuplot   
+###        > help       # Gnuplot command 
+### 
+### Copyright (C) October 2014               Stefan Harfst (University Oldenburg)
+### This program is made freely available with the understanding that every copy
+### of this file must include this header and that it comes without any WITHOUT
+### ANY WARRANTY
+
+# begin of Gnuplot commands (add your comments to explain the commands below)
+
+set xlabel 'x in rad'
+set ylabel 'f(x)'
+
+set xrange [-10 to 30]
+#für a = 1
+set yrange [-1 to 1]
+
+set terminal png
+set output 'plot_7_1.png'
+
+#plottet die Daten von ue7_1.dat als Linie
+plot 'ue7_1.dat' with line
+
