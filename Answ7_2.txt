@@ -1,0 +1,4 @@
+7.2:
+a) The period of the LCG has the length of 17 for (a=9, c=7 and m=16).
+b) The period of the LCG has the length of 9 if you change c=7 to c=6.
+c) For c%2=1 the period of the LCG has always the length of 17. For c%2=0 the period length of the LCG is variable.
