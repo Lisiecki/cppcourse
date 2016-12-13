@@ -1,0 +1,10 @@
+a)
+Bei uns wurde der Vektor a korrekt ausgegeben. Bei Vektor b wird allerdings der erste Eintrag falsch angegeben. Hier steht die 21 drin, die als a[4] gesetzt wurde. Das heißt a[4] greift auf b[0] zu und verändert diesen Wert.
+Allgemein:
+Da a nicht 5 Plätze hat, greift a[4] auf einen Speicherplatz zu, der nicht mehr für a reserviert ist und kann so andere Dinge ändern. Dies kann (muss aber nicht) wie bei uns ein Speicherplatz vom Vektor b sein, und somit diesen ändern. Dies kann große Probleme bereiten, da so versehentlich wichtige andere Dinge geändert werden können.
+
+b)
+siehe Vector3d.cpp
+
+c)
+Wenn man im catch-Block nach der Ausgabe ein return mit irgendeiner Zahl >0 schreibt (hier 5), dann terminiert die main-Methode an dieser Stelle und gibt beim Befehl echo$? die 5 aus (also den error code). Da dies in der main-Methode geschieht, kann man return machen. Ansonsten müsste man exit(int) aufrufen. 0 würde bedeuten, dass das Programm läuft. Deshalb muss die Zahl >0 sein.
