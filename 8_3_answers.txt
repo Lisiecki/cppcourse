@@ -1,0 +1,4 @@
+8.3
+a) Instead of an interation the function unsigned long int fib(unsigned long int n) uses recursion. Recursion in a function means that inside the function, the function calls itself. In case of fib(unsigned long int n) the function calls itself to calculate the n-th fibonacci number.
+b) (see plot)
+c) 

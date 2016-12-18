@@ -1,0 +1,28 @@
+###
+### Gnuplot script for plotting data from exercise 6.2
+###
+### task:  plot x,y,z-data from a file mandelbrot.dat which must exist in the same directory
+###
+### usage: $ gnuplot plot_mandelbrot.gpl
+###
+### help:  $ gnuplot    # to start Gnuplot   
+###        > help       # Gnuplot command 
+### 
+### Copyright (C) December 2014               Stefan Harfst (University Oldenburg)
+### This program is made freely available with the understanding that every copy
+### of this file must include this header and that it comes without any WITHOUT
+### ANY WARRANTY
+
+## sets the labels for the x- and y-axis
+set xlabel 'cpu time t_i in seconds'
+set ylabel 'n'
+
+## only for fibonacci_log.png
+set logscale x
+
+## sets the output to a png-file and the name of the file
+set terminal png
+set output 'fibonacci_log.png'
+
+plot 'fibonacci.dat' using 3:2 with linespoints
+
