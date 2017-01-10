@@ -1,57 +1,37 @@
-/********************************************************************************
- *
- * classRandom.h: header file for the class Random
- *
- * Copyright (C) January 2015               Stefan Harfst (University Oldenburg)
- * This program is made freely available with the understanding that every copy
- * of this file must include this header and that it comes without any WITHOUT
- * ANY WARRANTY.
- ********************************************************************************/
-#ifndef _CLASSRANDOM_H_
-#define _CLASSRANDOM_H_
-#include <cmath>
 
-using namespace std;
-
-typedef unsigned long long int Ullint;
 
 class LCG {
+protected:
+unsigned long long int a;
+unsigned long long int c;
+unsigned long long int m;
+unsigned long long int Xn;
 
- private:
-  Ullint seed;
-  Ullint a, c; 
-  Ullint m;
+public:
+/*
+*	Default constructor
+*/
+LCG():a(1103515245ULL),c(12345),m(1<<30),Xn(1){};
 
- public:
-  // *** empty constructor sets default parameters and seed to 0
-  LCG() {
-    // default values also used in GLIBC (i.e. in rand())
-    m    = 1ULL << 31;
-    a    = 1103515245ULL;
-    c    = 12345ULL;
-    seed = 0ULL;
-  }
-  // *** constructor sets chosen parameters and seed to 0
-  LCG(Ullint ain, Ullint cin, Ullint min) : a(ain), c(cin), m(min) {
-    seed = 0;
-  }
+/*
+*	Constructor with choosen values. Initialize seed X0 as Xn as well
+*/
+LCG(unsigned long long int l_a, unsigned long long int i_c, unsigned long long int l_m):a(l_a),c(i_c),m(l_m),Xn(1){};
 
-  // *** set the seed 
-  void setSeed(Ullint sin) {
-    seed = sin;
-  }
+/*
+*	Set seed X0
+*/
+void setSeed(unsigned long long int x0) 
+{
+	Xn = x0;
+}
 
-  /// *** returns the next random number
-  unsigned long int getNext()
-  {
-    seed = (a*seed + c) % m;
-    return seed;
-  }
-
-  // *** overloading the ()-operator for get next random number
-  unsigned long int operator() () {
-    return getNext();
-  }
+/* 
+*	Overload the operator() to return Xn+1
+*/
+unsigned long long int operator()()
+{
+	// recurrence relation
+	return Xn = (a*Xn+c) % m; 
+}
 };
-
-#endif
