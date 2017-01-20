@@ -26,13 +26,16 @@ int main() {
 			NameScore ns;
 			ifile >> ns;
 			v_ns.push_back(ns);
-			// (score of name) * (position in ordered list)
-			total_score += v_ns[i].getScore() * i+1;
 		}
 	}
-	
+
 	// Sort the lines by the alphabetical order of the names
 	sort(v_ns.begin(), v_ns.end());
+	for (int i = 0; i < cnt; i++)
+	{
+		// (score of name) * (position in ordered list)
+		total_score += v_ns[i].getScore() * (i+1);
+	}
 	// Print out the 2500th name and the total score
 	cout << "The 2500th name in the sorted list is: " << v_ns[2499].getName() << endl;
 	cout << "total name score = " << total_score << endl;
@@ -41,6 +44,9 @@ int main() {
 	return 0;
 }
 
+/*
+*	Returns amount of lines of a text file.
+*/
 int getLinesCount(char* file) {
 	int cnt;	
 	ifstream ifile;
