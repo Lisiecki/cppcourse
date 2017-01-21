@@ -1,6 +1,7 @@
 
 
 class LCG {
+//protected so that Uniform.cpp can get these params
 protected:
 unsigned long long int a;
 unsigned long long int c;
