@@ -25,20 +25,23 @@ double* operator()()
 	Xn = (a*Xn+c) % m;
 	double x = ((double) Xn)/((double)m); 
 	double u,v,p,q;
-		
-		do {
-		   u=2.0*x-1;
-		   v=2.0*x-1;
-		   q=u*u+v*v;
-		} while (q<=0.0||q>=1.0);
+	Gaussian g;
 
-		p=sqrt(-2*log(q)/q);
-		double x1=stdDev*u*p+mean;
-		double x2=stdDev*v*p+mean;
-		double erg[2];
-		erg[0]=x1;
-		erg[1]=x2;
-		return erg;
+	do {
+		u=2.0*x-1;
+		v=2.0*x-1;
+		q=u*u+v*v;
+		Xn = (a*Xn+c) % m;
+		x = ((double) Xn)/((double)m);
+	} while (q<=0.0||q>=1.0);
+
+	p=sqrt(-2*log(q)/q);
+	double x1=stdDev*u*p+mean;
+	double x2=stdDev*v*p+mean;
+	double *erg = new double[2];
+	erg[0]=x1;
+	erg[1]=x2;
+	return erg;
 }
 };
 
@@ -46,9 +49,11 @@ double* operator()()
 
 int main(){
 	Gaussian g;
-	//for (int i=0; i<50; i++){
+	// generate 100 random values and print values that are within 1(stdDev) of the mean
+	for (int i=0; i<100; i++){
 		double* y = g();
 		cout<<y[0]<<endl;
 		cout<<y[1]<<endl;
-	//}
+		delete y;
+	}
 }
