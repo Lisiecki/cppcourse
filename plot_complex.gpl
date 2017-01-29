@@ -1,0 +1,39 @@
+###
+### Gnuplot script for plotting data from exercise 6.2
+###
+### task:  plot x,y,z-data from a file mandelbrot.dat which must exist in the same directory
+###
+### usage: $ gnuplot plot_mandelbrot.gpl
+###
+### help:  $ gnuplot    # to start Gnuplot   
+###        > help       # Gnuplot command 
+### 
+### Copyright (C) December 2014               Stefan Harfst (University Oldenburg)
+### This program is made freely available with the understanding that every copy
+### of this file must include this header and that it comes without any WITHOUT
+### ANY WARRANTY
+
+## sets the labels for the x- and y-axis
+set xlabel 'x'
+set ylabel 'y'
+
+## sets the ranges for the x- and y-axis
+set xrange [-1 to 1]
+set yrange [-1 to 1]
+
+## also set the axis ratio so that unit lenghth is the same
+## in x- and y-direction
+set size ratio -1
+
+## sets the output to a png-file and the name of the file
+set terminal png
+set output 'complex_root.png'
+
+## we want to make a plot with colored points 
+set view map
+
+## splot is for plotting 3d data, but here viewed as a map
+## i.e. z-axis is not shown, in additions dots are colored
+## according to a pre-defined color palette
+splot 'complex_root.dat' with dots palette
+

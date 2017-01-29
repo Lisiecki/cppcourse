@@ -1,11 +1,11 @@
 #include <cmath>
 
-class Bisection{
-
-//was noch fehlt: root muss so gemacht werden, dass es wieder übergeben wird; falls der Algorithmus fehlschlägt muss it=-1 übergeben werden
+//The Bisection-Algorithm which returns the number of iterations. If this number is higher than 100, it terminates and returns -1
 template <class T>
-int rf_bisect(const T functor, const double a, const double b, double &root, const double eps){
+int rf_bisect(T functor, const double a_in, const double b_in, double &root, const double eps){
 	int it = 0;
+	double a = a_in;
+	double b = b_in;
 	double fa = functor(a);
 	double fb = functor(b);
 	double c, fc;
@@ -18,10 +18,12 @@ int rf_bisect(const T functor, const double a, const double b, double &root, con
 			a=c;
 		}
 		it++;
-	} while (std::abs(b-a)<eps || functor(c)==0.0);
-	&root = c;
+	} while ((std::abs(b-a)<eps || functor(c)==0.0) && it<=100);
+	root = c;
+	if(it>100)
+		it=-1;
 	return it;
 }
 
-};
+
 

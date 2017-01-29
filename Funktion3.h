@@ -6,15 +6,16 @@ class Funktion3 {
 
 public:
 //Default Constructor
-Funktion1(): {};
+Funktion3() {}
 
 //Overload ()-operator
-double operator()(const double z) {
+Complex operator()(const Complex z) {
 	return (z*z*z-1);
 }
 
 //returns derivative
-double dydx(double z) {
+Complex dydx(Complex z) {
 	return (3*z*z);
 
 };
+
