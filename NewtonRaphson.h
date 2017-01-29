@@ -2,7 +2,7 @@
 #include "classComplex.h"
 
 //The Newton-Raphson-Algorithm which returns the number of iterations. If this number is higher than 100, it terminates and returns -1
-/**template <class T>
+template <class T>
 int rf_newton(T functor, const double x0_in, double &root, const double eps){
 	int it = 0;
 	double x = 0;
@@ -19,11 +19,10 @@ int rf_newton(T functor, const double x0_in, double &root, const double eps){
 		it=-1;
 	root=x;
 	return it;
-}
-**/	
+}	
 
 template <class T>
-int rf_newton(T functor, const Complex x0_in, Complex &root, const double eps){
+int rf_newton_Complex(T functor, const Complex x0_in, Complex &root, const double eps){
 	int it = 0;
 	Complex x;
 	Complex x0=x0_in;
@@ -40,4 +39,5 @@ int rf_newton(T functor, const Complex x0_in, Complex &root, const double eps){
 	root=x;
 	return it;
 }
+
 

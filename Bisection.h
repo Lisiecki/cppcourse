@@ -18,7 +18,7 @@ int rf_bisect(T functor, const double a_in, const double b_in, double &root, con
 			a=c;
 		}
 		it++;
-	} while ((std::abs(b-a)<eps || functor(c)==0.0) && it<=100);
+	} while ((std::abs(b-a)>eps || functor(c)==0.0) && it<=100);
 	root = c;
 	if(it>100)
 		it=-1;

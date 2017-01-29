@@ -17,5 +17,6 @@ Complex operator()(const Complex z) {
 Complex dydx(Complex z) {
 	return (3*z*z);
 
+}
 };
 

@@ -56,7 +56,7 @@ int main() {
       // root finding function (may change the name too)
       // note that you need a new function where the argument z
       // root are of type Complex (and not double)
-      int iter = rf_newton(func3, z, root, 1e-14); 
+      int iter = rf_newton_Complex(func3, z, root, 1e-14); 
 
       // If Newton converges to 1, write "x y 1" to file, else write "x y 0"
       if (abs(root.re()-1.)<=1e-12 && abs(root.im()) <= 1e-12)
@@ -66,6 +66,6 @@ int main() {
     }
   }
   file.close();
+
 }
-};
 
