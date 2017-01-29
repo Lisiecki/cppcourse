@@ -1,11 +1,12 @@
 #include "Funktion1.h"
 #include "Funktion2.h"
-#include "Funktion3.h"
+//#include "Funktion3.h"
+#include "NewtonRaphson.h"
+#include "Bisection.h"
 #include <iostream>
 
 using namespace std;
 
-class Aufgabe2{
 
 //Was noch fehlt: Testen:), müssen wir die root auch jeweils ausgeben?
 int main(){
@@ -44,11 +45,9 @@ int main(){
 
 	//Teil 3
 	cout<<"Funktion 2 Teil 3"<<endl;
-	int itern = rf_newton(f2, 0, root, eps);
+	itern = rf_newton(f2, 0, root, eps);
 	cout<<"itern= "<<itern<<endl;
 	
 	
-}
+};
 
-
-}

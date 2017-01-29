@@ -7,10 +7,10 @@ double c1;
 
 public:
 //Default Constructor
-Funktion1(): c1(1){};
+Funktion1(): c1(1){}
 
 //Constructor with choosen values
-Funktion1(double c1_in): c1(c1_in){};
+Funktion1(double c1_in): c1(c1_in){}
 
 //Overload ()-operator
 double operator()(const double x) {
@@ -21,4 +21,6 @@ double operator()(const double x) {
 double dydx(double x) {
 	return (exp(x)+c1);
 
+}
 };
+
